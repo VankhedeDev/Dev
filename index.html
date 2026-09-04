@@ -1,0 +1,810 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dev Vankhede | Corporate Finance Professional</title>
+<meta name="description" content="Dev Vankhede — Corporate Finance professional and CMA Finalist specializing in FP&amp;A, Cash Flow Modeling, Trade Finance, and Power BI-driven financial reporting.">
+<meta name="color-scheme" content="light">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Dev Vankhede | Corporate Finance Professional">
+<meta property="og:description" content="Transforming complex financial data into strategic insight — across FP&amp;A, Trade Finance, and Corporate Taxation.">
+
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect x='6' y='6' width='52' height='52' rx='6' fill='none' stroke='%2337327D' stroke-width='4'/%3E%3Ctext x='32' y='41' font-family='Arial, sans-serif' font-size='24' font-weight='700' fill='%2337327D' text-anchor='middle'%3EDV%3C/text%3E%3C/svg%3E">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet">
+
+<script>
+  /* Set reduced-motion state synchronously, before first paint, to avoid animation flash */
+  (function(){
+    try {
+      if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        document.documentElement.classList.add('no-motion');
+      }
+    } catch (e) {}
+  })();
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Dev Vankhede",
+  "jobTitle": "Corporate Finance Professional",
+  "email": "mailto:vankhededev@gmail.com",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Vadodara",
+    "addressRegion": "Gujarat",
+    "addressCountry": "IN"
+  },
+  "knowsAbout": ["Financial Planning & Analysis", "Trade Finance", "Corporate Taxation", "Power BI", "Working Capital Management"]
+}
+</script>
+
+<style>
+  /* ===================== Design tokens ===================== */
+  :root{
+    --bg: #F7F7F5;
+    --surface: #FFFFFF;
+    --text-primary: #17191D;
+    --text-secondary: #5F6470;
+    --accent: #37327D;
+    --accent-dark: #2B275F;
+    --accent-tint: #ECEBF6;
+    --border: #D9D9D9;
+    --border-strong: #B7B9C2;
+    --shadow-accent: rgba(55,50,125,0.10);
+
+    --font-display: 'Manrope', 'Segoe UI', system-ui, sans-serif;
+    --font-body: 'Inter', 'Segoe UI', system-ui, sans-serif;
+
+    --container: 1200px;
+    --radius-s: 3px;
+    --radius-m: 6px;
+    --section-pad: 4.5rem;
+  }
+
+  *,*::before,*::after{ box-sizing: border-box; }
+  html{ scroll-behavior: smooth; }
+  html.no-motion{ scroll-behavior: auto; }
+
+  body{
+    margin:0;
+    background: var(--bg);
+    color: var(--text-primary);
+    font-family: var(--font-body);
+    font-size: 16px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  img,svg{ display:block; max-width:100%; }
+  a{ color: inherit; text-decoration: none; }
+  ul{ list-style:none; margin:0; padding:0; }
+  h1,h2,h3,p{ margin:0; }
+  button{ font-family: inherit; }
+
+  .container{
+    max-width: var(--container);
+    margin: 0 auto;
+    padding: 0 2rem;
+  }
+
+  h1,h2,h3{ font-family: var(--font-display); color: var(--text-primary); }
+
+  h2{
+    font-size: clamp(1.75rem, 3.2vw, 2.375rem);
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    line-height: 1.2;
+  }
+
+  .section, .hero{ scroll-margin-top: 90px; }
+  .section{ padding: var(--section-pad) 0; }
+  .section-head{ margin-bottom: 3rem; }
+
+  .eyebrow-arrow{ display:inline-flex; }
+
+  /* Skip link */
+  .skip-link{
+    position:absolute; left:1rem; top:-3rem;
+    background:var(--accent); color:#fff; padding:.65rem 1rem;
+    border-radius: var(--radius-s); font-size:.875rem; font-weight:600;
+    transition: top .2s ease; z-index: 200;
+  }
+  .skip-link:focus{ top:1rem; }
+
+  :focus-visible{ outline: 2px solid var(--accent); outline-offset: 3px; }
+
+  /* ===================== Reveal-on-scroll ===================== */
+  .reveal{
+    opacity: 0;
+    transform: translateY(14px);
+    transition: opacity .6s ease, transform .6s ease;
+  }
+  .reveal.is-visible{ opacity: 1; transform: none; }
+  html.no-motion .reveal{ opacity:1 !important; transform:none !important; transition:none !important; }
+
+  /* ===================== Header ===================== */
+  .site-header{
+    position: sticky; top:0; z-index: 100;
+    background: rgba(247,247,245,0.92);
+    -webkit-backdrop-filter: blur(6px);
+    backdrop-filter: blur(6px);
+    border-bottom: 1px solid var(--border);
+  }
+  .header-inner{
+    display:flex; align-items:center; justify-content:space-between;
+    height: 76px;
+  }
+  .logo{ display:flex; align-items:center; gap:.6rem; }
+  .logo-mark{
+    width: 38px; height: 38px;
+    border: 1.5px solid var(--accent);
+    border-radius: var(--radius-s);
+    display:flex; align-items:center; justify-content:center;
+    font-family: var(--font-display);
+    font-weight: 800; font-size: .8125rem; letter-spacing: .02em;
+    color: var(--accent);
+  }
+  .logo-name{
+    font-family: var(--font-display); font-weight:700; font-size:.9375rem;
+    color: var(--text-primary);
+    display:none;
+  }
+
+  .nav-desktop ul{ display:flex; gap: 2.25rem; }
+  .nav-link{
+    position:relative;
+    font-size:.9375rem; font-weight:500; color: var(--text-secondary);
+    padding: .4rem 0.05rem;
+    transition: color .2s ease;
+  }
+  .nav-link::after{
+    content:""; position:absolute; left:0; bottom:-2px;
+    width:100%; height:2px; background: var(--accent);
+    transform: scaleX(0); transform-origin: left;
+    transition: transform .25s ease;
+  }
+  .nav-link:hover{ color: var(--text-primary); }
+  .nav-link:hover::after{ transform: scaleX(1); }
+  .nav-link.active{ color: var(--text-primary); }
+  .nav-link.active::after{ transform: scaleX(1); }
+
+  .menu-toggle{
+    display:none; width:40px; height:40px; border:1px solid var(--border);
+    border-radius: var(--radius-s); background:transparent; cursor:pointer;
+    flex-direction:column; align-items:center; justify-content:center; gap:5px;
+  }
+  .menu-toggle span{ width:18px; height:1.5px; background: var(--text-primary); transition: transform .25s ease, opacity .25s ease; }
+  .menu-toggle[aria-expanded="true"] span:nth-child(1){ transform: translateY(6.5px) rotate(45deg); }
+  .menu-toggle[aria-expanded="true"] span:nth-child(2){ opacity:0; }
+  .menu-toggle[aria-expanded="true"] span:nth-child(3){ transform: translateY(-6.5px) rotate(-45deg); }
+
+  .nav-mobile{
+    display:none; flex-direction:column;
+    border-top: 1px solid var(--border);
+    background: var(--bg);
+  }
+  .nav-mobile.is-open{ display:flex; }
+  .nav-mobile a{
+    padding: 1rem 2rem; font-size:1rem; font-weight:500; color: var(--text-secondary);
+    border-bottom:1px solid var(--border);
+  }
+  .nav-mobile a.active{ color: var(--accent); }
+
+  /* ===================== Buttons ===================== */
+  .btn{
+    display:inline-flex; align-items:center; gap:.55rem;
+    font-size:.9375rem; font-weight:600; font-family: var(--font-body);
+    padding: .9rem 1.6rem; border-radius: var(--radius-m);
+    border:1px solid transparent; cursor:pointer;
+    transition: background .2s ease, transform .2s ease, border-color .2s ease, color .2s ease;
+  }
+  .btn-primary{ background: var(--accent); color:#fff; }
+  .btn-primary:hover{ background: var(--accent-dark); transform: translateY(-2px); }
+  .btn-primary svg{ transition: transform .2s ease; }
+  .btn-primary:hover svg{ transform: translate(2px,-2px); }
+
+  .btn-icon{
+    width:48px; height:48px; padding:0; justify-content:center;
+    border:1px solid var(--border); background: transparent; color: var(--text-primary);
+  }
+  .btn-icon:hover{ border-color: var(--accent); background: var(--accent-tint); color: var(--accent); transform: translateY(-2px); }
+
+  /* ===================== Hero ===================== */
+  .hero{ position:relative; padding: 5rem 0 4.5rem; overflow:hidden; }
+  .hero-bgdots{
+    position:absolute; inset:0; pointer-events:none;
+    background-image: radial-gradient(var(--border) 1px, transparent 1px);
+    background-size: 26px 26px;
+    -webkit-mask-image: radial-gradient(ellipse 70% 60% at 60% 35%, black 35%, transparent 78%);
+    mask-image: radial-gradient(ellipse 70% 60% at 60% 35%, black 35%, transparent 78%);
+    opacity: .8;
+  }
+  .hero-inner{
+    position:relative;
+    display:grid; grid-template-columns: 1.15fr .85fr; gap: 3rem; align-items:center;
+  }
+  .eyebrow{
+    display:inline-flex; align-items:center; gap:.55rem;
+    font-size:.9375rem; font-weight:600; letter-spacing:.02em; color: var(--accent);
+    margin-bottom:1.5rem;
+  }
+  .eyebrow-dot{ width:7px; height:7px; border-radius:1px; background: var(--accent); flex:none; }
+
+  .hero h1{
+    font-size: clamp(2.5rem, 6vw, 4.5rem);
+    font-weight:800; letter-spacing:-0.02em; line-height:1.05;
+    margin-bottom:1.5rem;
+  }
+  .hero-lede{
+    font-size: clamp(1.0625rem, 1.6vw, 1.25rem);
+    color: var(--text-secondary); line-height:1.65;
+    max-width: 46ch; margin-bottom: 2.5rem;
+  }
+  .hero-actions{ display:flex; align-items:center; gap:1rem; flex-wrap:wrap; }
+
+  .hero-graphic{ position:relative; }
+  .hero-graphic svg{ width:100%; height:auto; }
+  .hero-shape{
+    fill:none; stroke-width:1.4;
+    stroke-dasharray: 1400; stroke-dashoffset: 1400; opacity:0;
+  }
+  .hero-graphic.in-view .hero-shape{ animation: draw-in 1.3s cubic-bezier(.34,.14,.16,1) forwards; }
+  .hero-shape.s1{ stroke: var(--accent); }
+  .hero-shape.s2{ stroke: var(--text-primary); stroke-opacity:.18; }
+  .hero-shape.s3{ stroke: var(--border-strong); }
+  .hero-dot{ fill: var(--accent); opacity:0; transform: scale(0); transform-origin: 300px 96px; }
+  .hero-graphic.in-view .hero-dot{ animation: dot-in .5s ease forwards; animation-delay: 1.05s; }
+  html.no-motion .hero-shape{ stroke-dashoffset:0; opacity:1; }
+  html.no-motion .hero-dot{ opacity:1; transform: scale(1); }
+
+  @keyframes draw-in{ from{ stroke-dashoffset:1400; opacity:.35; } to{ stroke-dashoffset:0; opacity:1; } }
+  @keyframes dot-in{ from{ opacity:0; transform: scale(0); } to{ opacity:1; transform: scale(1); } }
+
+  /* ===================== About ===================== */
+  .about-grid{
+    display:grid; grid-template-columns: 1.3fr 1fr; gap: 4rem; align-items:start;
+    margin-top: 2.5rem;
+  }
+  .about-text{ font-size:1.1875rem; color: var(--text-primary); line-height:1.7; max-width: 52ch; }
+  .expertise-list li{
+    display:flex; align-items:center; gap:.85rem;
+    padding: .95rem 0; border-top:1px solid var(--border);
+    font-size:.9375rem; color: var(--text-primary); font-weight:500;
+  }
+  .expertise-list li:last-child{ border-bottom:1px solid var(--border); }
+  .expertise-marker{ width:7px; height:7px; border:1.4px solid var(--accent); flex:none; border-radius:1px; }
+
+  /* ===================== Projects ===================== */
+  .projects-grid{
+    display:grid; grid-template-columns: repeat(3, 1fr); gap:1.5rem;
+  }
+  .project-card{
+    grid-column: span 1;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-m);
+    padding: 2rem;
+    transition: transform .25s ease, border-color .25s ease, box-shadow .25s ease;
+  }
+  .project-card:hover{
+    transform: translateY(-4px);
+    border-color: var(--border-strong);
+    box-shadow: 0 18px 34px var(--shadow-accent);
+  }
+  .project-card.featured{ grid-column: span 3; padding: 2.75rem; }
+  .featured-inner{ display:grid; grid-template-columns: 1.4fr 1fr; gap: 2.5rem; align-items:center; }
+
+  .project-card-head{ display:flex; align-items:flex-start; justify-content:space-between; gap:1rem; margin-bottom:.9rem; }
+  .project-card h3{ font-size:1.1875rem; font-weight:700; letter-spacing:-0.005em; }
+  .project-card.featured h3{ font-size:1.5rem; }
+  .project-arrow{
+    flex:none; width:32px; height:32px; border:1px solid var(--border); border-radius: var(--radius-s);
+    display:flex; align-items:center; justify-content:center; color: var(--text-secondary);
+    transition: border-color .2s ease, color .2s ease, background .2s ease;
+  }
+  .project-card:hover .project-arrow{ border-color: var(--accent); color: var(--accent); background: var(--accent-tint); }
+
+  .project-card p{ color: var(--text-secondary); font-size:.9688rem; line-height:1.65; max-width:52ch; margin-bottom:1.4rem; }
+
+  .tag-list{ display:flex; flex-wrap:wrap; gap:.5rem; }
+  .tag-list li{
+    font-size:.8125rem; font-weight:600; color: var(--accent);
+    background: var(--accent-tint); padding:.35rem .7rem; border-radius: var(--radius-s);
+    letter-spacing:.01em;
+  }
+
+  /* ===================== Skills ===================== */
+  .skills-grid{
+    display:grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+    gap: 1rem;
+  }
+  .skill-item{
+    display:flex; align-items:center; gap:.75rem;
+    border:1px solid var(--border); border-radius: var(--radius-m);
+    padding: 1.1rem 1.15rem; background: var(--surface);
+    font-size:.9375rem; font-weight:500; color: var(--text-primary);
+    transition: border-color .2s ease, transform .2s ease;
+  }
+  .skill-item:hover{ border-color: var(--accent); transform: translateY(-2px); }
+  .skill-marker{ width:7px; height:7px; background: var(--accent); border-radius:1px; flex:none; }
+
+  /* ===================== Experience ===================== */
+  .experience-card{
+    background: var(--surface); border:1px solid var(--border); border-radius: var(--radius-m);
+    padding: 2.75rem;
+  }
+  .experience-header{ display:flex; justify-content:space-between; align-items:flex-end; flex-wrap:wrap; gap:1rem; margin-bottom:2.25rem; padding-bottom:2rem; border-bottom:1px solid var(--border); }
+  .experience-header h3{ font-size:1.375rem; font-weight:700; margin-bottom:.35rem; }
+  .experience-role{ color: var(--accent); font-weight:600; font-size:.9375rem; }
+
+  .experience-timeline{ position:relative; padding-left: 1.75rem; }
+  .experience-timeline::before{
+    content:""; position:absolute; left:3px; top:6px; bottom:6px; width:1px; background: var(--border);
+  }
+  .experience-timeline li{
+    position:relative; padding: .8rem 0; font-size:.9688rem; color: var(--text-primary); font-weight:500;
+  }
+  .experience-timeline li::before{
+    content:""; position:absolute; left:-1.75rem; top: 1.15rem;
+    width:7px; height:7px; background: var(--bg); border:1.4px solid var(--accent); border-radius:1px;
+  }
+
+  /* ===================== Education ===================== */
+  .education-grid{ display:grid; grid-template-columns: 1fr 1fr; gap:4rem; }
+  .education-grid h3{ font-size:1.0625rem; font-weight:700; margin-bottom:1.5rem; }
+  .edu-list li{ padding:1.15rem 0; border-top:1px solid var(--border); }
+  .edu-list li:last-child{ border-bottom:1px solid var(--border); }
+  .edu-title{ font-weight:700; font-size:1rem; margin-bottom:.3rem; }
+  .edu-meta{ color: var(--accent); font-size:.875rem; font-weight:600; margin-bottom:.2rem; }
+  .edu-org{ color: var(--text-secondary); font-size:.875rem; }
+
+  .cert-list li{
+    padding: 1.05rem 0; border-top:1px solid var(--border);
+    font-size:.9375rem; color: var(--text-primary); font-weight:500;
+    display:flex; align-items:center; gap:.75rem;
+  }
+  .cert-list li:last-child{ border-bottom:1px solid var(--border); }
+
+  /* ===================== Contact ===================== */
+  .contact-inner{ max-width: 720px; }
+  .contact h2{ font-size: clamp(2.25rem, 4.5vw, 3.25rem); margin-bottom:1.5rem; }
+  .contact-lede{ color: var(--text-secondary); font-size:1.125rem; line-height:1.7; margin-bottom:2.5rem; max-width:58ch; }
+  .contact-details{
+    display:flex; flex-wrap:wrap; gap: 2.5rem; margin-top: 3.5rem;
+    padding-top: 2.5rem; border-top:1px solid var(--border);
+  }
+  .contact-detail .label{ display:block; font-size:.8125rem; color: var(--text-secondary); margin-bottom:.35rem; font-weight:500; }
+  .contact-detail .value{ font-size:1rem; font-weight:600; color: var(--text-primary); }
+  a.contact-link:hover{ color: var(--accent); }
+
+  /* ===================== Footer ===================== */
+  .site-footer{ border-top:1px solid var(--border); padding: 2.25rem 0; }
+  .footer-inner{ display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:1rem; }
+  .footer-inner p{ font-family: var(--font-display); font-weight:700; font-size:1rem; }
+  .footer-inner ul{ display:flex; gap:1.75rem; }
+  .footer-inner a{ font-size:.9063rem; color: var(--text-secondary); transition: color .2s ease; }
+  .footer-inner a:hover{ color: var(--accent); }
+
+  /* ===================== Responsive ===================== */
+  @media (max-width: 1024px){
+    :root{ --section-pad: 4rem; }
+    .hero-inner{ grid-template-columns: 1fr; }
+    .hero-graphic{ max-width:340px; margin: 0 auto; order:-1; }
+    .about-grid{ grid-template-columns: 1fr; gap: 2.5rem; }
+    .projects-grid{ grid-template-columns: repeat(2, 1fr); }
+    .project-card.featured{ grid-column: span 2; }
+    .featured-inner{ grid-template-columns: 1fr; }
+    .education-grid{ grid-template-columns: 1fr; gap:2.5rem; }
+  }
+
+  @media (max-width: 860px){
+    .nav-desktop{ display:none; }
+    .menu-toggle{ display:flex; }
+    .logo-name{ display:inline-block; }
+  }
+
+  @media (max-width: 640px){
+    .container{ padding: 0 1.25rem; }
+    :root{ --section-pad: 2.75rem; }
+    .header-inner{ height:68px; }
+    .hero{ padding: 3rem 0 2.5rem; }
+    .hero-actions{ flex-direction:column; align-items:stretch; }
+    .hero-actions .btn{ justify-content:center; width:100%; }
+    .projects-grid{ grid-template-columns: 1fr; }
+    .project-card.featured{ grid-column: span 1; padding: 1.75rem; }
+    .experience-card{ padding: 1.75rem; }
+    .experience-header{ align-items:flex-start; }
+    .contact-details{ gap: 1.75rem; }
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    *{ animation-duration: .001ms !important; animation-iteration-count: 1 !important; transition-duration: .001ms !important; }
+  }
+</style>
+</head>
+<body>
+<a href="#main" class="skip-link">Skip to main content</a>
+
+<!-- ===================== Header ===================== -->
+<header class="site-header">
+  <div class="container header-inner">
+    <a href="#home" class="logo" aria-label="Dev Vankhede — Home">
+      <span class="logo-mark">DV</span>
+      <span class="logo-name">Dev Vankhede</span>
+    </a>
+
+    <nav class="nav-desktop" aria-label="Primary">
+      <ul>
+        <li><a href="#home" class="nav-link active" data-nav="home">Home</a></li>
+        <li><a href="#projects" class="nav-link" data-nav="projects">Projects</a></li>
+        <li><a href="#about" class="nav-link" data-nav="about">About</a></li>
+        <li><a href="#contact" class="nav-link" data-nav="contact">Contact</a></li>
+      </ul>
+    </nav>
+
+    <button class="menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobileNav">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+
+  <nav class="nav-mobile" id="mobileNav" aria-label="Mobile">
+    <a href="#home" data-nav="home" class="active">Home</a>
+    <a href="#projects" data-nav="projects">Projects</a>
+    <a href="#about" data-nav="about">About</a>
+    <a href="#contact" data-nav="contact">Contact</a>
+  </nav>
+</header>
+
+<main id="main">
+
+  <!-- ===================== Hero ===================== -->
+  <section id="home" class="hero">
+    <div class="hero-bgdots" aria-hidden="true"></div>
+    <div class="container hero-inner">
+      <div class="hero-content">
+        <p class="eyebrow"><span class="eyebrow-dot" aria-hidden="true"></span>Finance Professional</p>
+        <h1>Dev Vankhede</h1>
+        <p class="hero-lede">Transforming complex financial data into strategic insight — across FP&amp;A, Trade Finance, and Corporate Taxation.</p>
+        <div class="hero-actions">
+          <a href="#projects" class="btn btn-primary">
+            View My Work
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3.5 12.5L12.5 3.5M12.5 3.5H5.5M12.5 3.5V10.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+          <!-- TODO: replace with Dev's actual LinkedIn profile URL -->
+          <a href="https://www.linkedin.com/in/dev-vankhede/" target="_blank" rel="noopener noreferrer" class="btn btn-icon" aria-label="Dev Vankhede on LinkedIn">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6.94 8.5H3.56V20.5H6.94V8.5Z" fill="currentColor"/><path d="M5.25 7.03C6.35 7.03 7.24 6.13 7.24 5.02C7.24 3.9 6.35 3 5.25 3C4.14 3 3.25 3.9 3.25 5.02C3.25 6.13 4.14 7.03 5.25 7.03Z" fill="currentColor"/><path d="M13.2 8.5H9.98V20.5H13.2V14.35C13.2 12.6 13.85 11.4 15.4 11.4C16.6 11.4 17.1 12.25 17.1 14.35V20.5H20.32V13.7C20.32 10.3 18.6 8.24 15.9 8.24C14.5 8.24 13.6 8.94 13.2 9.6V8.5Z" fill="currentColor"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="hero-graphic" id="heroGraphic" aria-hidden="true">
+        <svg viewBox="0 0 440 400">
+          <rect class="hero-shape s3" x="24" y="70" width="76" height="290" rx="2"/>
+          <rect class="hero-shape s1" x="96" y="34" width="252" height="252" rx="2"/>
+          <rect class="hero-shape s2" x="212" y="196" width="164" height="164" rx="2"/>
+          <circle class="hero-dot" cx="300" cy="96" r="6"/>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== About ===================== -->
+  <section id="about" class="section about">
+    <div class="container">
+      <h2 class="reveal">About Me</h2>
+      <div class="about-grid">
+        <p class="about-text reveal">An analytical Corporate Finance professional and CMA Finalist with experience across Financial Planning &amp; Analysis, Working Capital Management, Global Trade Finance, Accounting, and Corporate Taxation.</p>
+        <ul class="expertise-list reveal">
+          <li><span class="expertise-marker" aria-hidden="true"></span>Financial Analysis &amp; FP&amp;A</li>
+          <li><span class="expertise-marker" aria-hidden="true"></span>Cash Flow &amp; Working Capital Management</li>
+          <li><span class="expertise-marker" aria-hidden="true"></span>Accounts Receivable &amp; Commercial Finance</li>
+          <li><span class="expertise-marker" aria-hidden="true"></span>Month-End Closing &amp; R2R</li>
+          <li><span class="expertise-marker" aria-hidden="true"></span>Import Export &amp; Trade Finance</li>
+          <li><span class="expertise-marker" aria-hidden="true"></span>FEMA and RBI Compliance</li>
+          <li><span class="expertise-marker" aria-hidden="true"></span>GST and Corporate Taxation</li>
+          <li><span class="expertise-marker" aria-hidden="true"></span>Power BI and Financial Automation</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== Projects ===================== -->
+  <section id="projects" class="section projects">
+    <div class="container">
+      <div class="section-head">
+        <h2 class="reveal">Selected Work</h2>
+      </div>
+      <div class="projects-grid">
+
+        <article class="project-card featured reveal">
+          <div class="featured-inner">
+            <div>
+              <div class="project-card-head">
+                <h3>Cash Flow &amp; Variance Modeling</h3>
+                <span class="project-arrow"><svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3.5 12.5L12.5 3.5M12.5 3.5H5.5M12.5 3.5V10.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+              </div>
+              <p>Built dynamic cash inflow models, rolling forecasts, and automated cost variance frameworks to analyze operational trends and support working capital decisions.</p>
+              <ul class="tag-list">
+                <li>FP&amp;A</li><li>Excel</li><li>Power Query</li><li>Cash Flow Modeling</li>
+              </ul>
+            </div>
+          </div>
+        </article>
+
+        <article class="project-card reveal" style="transition-delay:.06s">
+          <div class="project-card-head">
+            <h3>Power BI Executive Dashboards</h3>
+            <span class="project-arrow"><svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3.5 12.5L12.5 3.5M12.5 3.5H5.5M12.5 3.5V10.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          </div>
+          <p>Developed interactive Power BI dashboards and automated data pipelines to transform complex multi-source financial data into executive KPI reporting and decision-making insights.</p>
+          <ul class="tag-list">
+            <li>Power BI</li><li>DAX</li><li>ETL</li><li>MIS Reporting</li>
+          </ul>
+        </article>
+
+        <article class="project-card reveal" style="transition-delay:.12s">
+          <div class="project-card-head">
+            <h3>Global Trade Finance Operations</h3>
+            <span class="project-arrow"><svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3.5 12.5L12.5 3.5M12.5 3.5H5.5M12.5 3.5V10.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          </div>
+          <p>Managed cross-border banking, import-export documentation, FEMA/RBI compliance, EDPMS/IDPMS processes, Form A2, Form 15CA/CB and customs documentation.</p>
+          <ul class="tag-list">
+            <li>Trade Finance</li><li>FEMA</li><li>RBI Compliance</li><li>ICEGATE</li>
+          </ul>
+        </article>
+
+        <article class="project-card reveal" style="transition-delay:.18s">
+          <div class="project-card-head">
+            <h3>Receivables &amp; Working Capital Analytics</h3>
+            <span class="project-arrow"><svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3.5 12.5L12.5 3.5M12.5 3.5H5.5M12.5 3.5V10.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          </div>
+          <p>Managed multi-crore accounts receivable portfolios, performed aging analysis, resolved billing disputes and commercial deductions, and supported DSO reduction initiatives.</p>
+          <ul class="tag-list">
+            <li>Accounts Receivable</li><li>Working Capital</li><li>Finance Analytics</li>
+          </ul>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== Skills ===================== -->
+  <section id="skills" class="section skills">
+    <div class="container">
+      <div class="section-head">
+        <h2 class="reveal">Core Expertise</h2>
+      </div>
+      <div class="skills-grid">
+        <div class="skill-item reveal"><span class="skill-marker" aria-hidden="true"></span>Financial Planning &amp; Analysis</div>
+        <div class="skill-item reveal"><span class="skill-marker" aria-hidden="true"></span>Financial Modeling</div>
+        <div class="skill-item reveal"><span class="skill-marker" aria-hidden="true"></span>Cash Flow Management</div>
+        <div class="skill-item reveal"><span class="skill-marker" aria-hidden="true"></span>Working Capital Optimization</div>
+        <div class="skill-item reveal"><span class="skill-marker" aria-hidden="true"></span>Variance Analysis</div>
+        <div class="skill-item reveal"><span class="skill-marker" aria-hidden="true"></span>Power BI</div>
+        <div class="skill-item reveal"><span class="skill-marker" aria-hidden="true"></span>Advanced Excel</div>
+        <div class="skill-item reveal"><span class="skill-marker" aria-hidden="true"></span>Power Query</div>
+        <div class="skill-item reveal"><span class="skill-marker" aria-hidden="true"></span>VBA</div>
+        <div class="skill-item reveal"><span class="skill-marker" aria-hidden="true"></span>DAX</div>
+        <div class="skill-item reveal"><span class="skill-marker" aria-hidden="true"></span>SQL</div>
+        <div class="skill-item reveal"><span class="skill-marker" aria-hidden="true"></span>R2R &amp; Financial Closing</div>
+        <div class="skill-item reveal"><span class="skill-marker" aria-hidden="true"></span>Accounts Receivable</div>
+        <div class="skill-item reveal"><span class="skill-marker" aria-hidden="true"></span>Trade Finance</div>
+        <div class="skill-item reveal"><span class="skill-marker" aria-hidden="true"></span>FEMA &amp; RBI Compliance</div>
+        <div class="skill-item reveal"><span class="skill-marker" aria-hidden="true"></span>GST &amp; Taxation</div>
+        <div class="skill-item reveal"><span class="skill-marker" aria-hidden="true"></span>Corporate Banking</div>
+        <div class="skill-item reveal"><span class="skill-marker" aria-hidden="true"></span>Import Export Documentation</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== Experience ===================== -->
+  <section id="experience" class="section experience">
+    <div class="container">
+      <div class="section-head">
+        <h2 class="reveal">Experience</h2>
+      </div>
+      <div class="experience-card reveal">
+        <div class="experience-header">
+          <div>
+            <h3>VCare Engineering Pvt. Ltd.</h3>
+            <p class="experience-role">Finance / Corporate Finance Professional</p>
+          </div>
+        </div>
+        <ul class="experience-timeline">
+          <li>Financial Analysis &amp; Cash Flow Modeling</li>
+          <li>Receivables Management &amp; Dispute Resolution</li>
+          <li>Month-End Closures &amp; R2R Accounting</li>
+          <li>Commercial PO Review &amp; Contract Control</li>
+          <li>Import-Export &amp; Global Trade Finance</li>
+          <li>GST &amp; Tax Audit Support</li>
+          <li>Power BI Dashboards &amp; Financial Automation</li>
+          <li>Treasury &amp; Banking Operations</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== Education & Certifications ===================== -->
+  <section id="education" class="section education">
+    <div class="container">
+      <div class="section-head">
+        <h2 class="reveal">Education &amp; Certifications</h2>
+      </div>
+      <div class="education-grid">
+        <div class="reveal">
+          <h3>Education</h3>
+          <ul class="edu-list">
+            <li>
+              <p class="edu-title">CMA Final</p>
+              <p class="edu-meta">Group III Cleared | Group IV Pursuing</p>
+              <p class="edu-org">Institute of Cost Accountants of India (ICMAI)</p>
+            </li>
+            <li>
+              <p class="edu-title">CMA Intermediate</p>
+              <p class="edu-meta">Qualified – 2023</p>
+            </li>
+            <li>
+              <p class="edu-title">Bachelor of Commerce</p>
+              <p class="edu-meta">The Maharaja Sayajirao University of Baroda – 2024</p>
+            </li>
+          </ul>
+        </div>
+        <div class="reveal" style="transition-delay:.08s">
+          <h3>Certifications</h3>
+          <ul class="cert-list">
+            <li><span class="expertise-marker" aria-hidden="true"></span>Financial Analysis with AI Tools</li>
+            <li><span class="expertise-marker" aria-hidden="true"></span>Investment Risk Management</li>
+            <li><span class="expertise-marker" aria-hidden="true"></span>Excel Data Analysis &amp; Visualization</li>
+            <li><span class="expertise-marker" aria-hidden="true"></span>AI Tools &amp; Financial Productivity Workshop</li>
+            <li><span class="expertise-marker" aria-hidden="true"></span>Industry Oriented Training Program – ICMAI</li>
+            <li><span class="expertise-marker" aria-hidden="true"></span>SAP, Excel &amp; E-Filing Skill Certification</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== Contact ===================== -->
+  <section id="contact" class="section contact">
+    <div class="container contact-inner">
+      <h2 class="reveal">Let's connect.</h2>
+      <p class="contact-lede reveal">I'm open to Corporate Finance, FP&amp;A, Trade Finance, and strategic finance opportunities. If you're looking for a detail-oriented finance professional with strong analytical and business understanding, I'd be glad to connect.</p>
+      <a href="mailto:vankhededev@gmail.com" class="btn btn-primary reveal">
+        Get in Touch
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3.5 12.5L12.5 3.5M12.5 3.5H5.5M12.5 3.5V10.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+
+      <div class="contact-details reveal">
+        <div class="contact-detail">
+          <span class="label">Email</span>
+          <a class="value contact-link" href="mailto:vankhededev@gmail.com">vankhededev@gmail.com</a>
+        </div>
+        <div class="contact-detail">
+          <span class="label">Location</span>
+          <span class="value">Vadodara, Gujarat, India</span>
+        </div>
+        <div class="contact-detail">
+          <span class="label">LinkedIn</span>
+          <!-- TODO: replace with Dev's actual LinkedIn profile URL -->
+          <a class="value contact-link" href="https://www.linkedin.com/in/dev-vankhede/" target="_blank" rel="noopener noreferrer">linkedin.com/in/dev-vankhede</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ===================== Footer ===================== -->
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <p>Dev Vankhede</p>
+    <nav aria-label="Footer">
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+<script>
+(function(){
+  // ---------- Mobile menu ----------
+  var toggle = document.getElementById('menuToggle');
+  var mobileNav = document.getElementById('mobileNav');
+
+  function closeMenu(){
+    mobileNav.classList.remove('is-open');
+    toggle.setAttribute('aria-expanded','false');
+    toggle.setAttribute('aria-label','Open menu');
+  }
+  function openMenu(){
+    mobileNav.classList.add('is-open');
+    toggle.setAttribute('aria-expanded','true');
+    toggle.setAttribute('aria-label','Close menu');
+  }
+  toggle.addEventListener('click', function(){
+    var isOpen = mobileNav.classList.contains('is-open');
+    isOpen ? closeMenu() : openMenu();
+  });
+  mobileNav.querySelectorAll('a').forEach(function(a){
+    a.addEventListener('click', closeMenu);
+  });
+  document.addEventListener('keydown', function(e){
+    if (e.key === 'Escape') closeMenu();
+  });
+
+  // ---------- Active nav highlighting ----------
+  var navLinks = document.querySelectorAll('[data-nav]');
+  var anchors = ['home','about','projects','contact']
+    .map(function(id){ return document.getElementById(id); })
+    .filter(Boolean);
+
+  function updateActiveNav(){
+    var scrollPos = window.scrollY + 120;
+    var current = anchors[0];
+    anchors.forEach(function(section){
+      if (section.offsetTop <= scrollPos) current = section;
+    });
+    navLinks.forEach(function(link){
+      link.classList.toggle('active', link.getAttribute('data-nav') === current.id);
+    });
+  }
+
+  var navTicking = false;
+  window.addEventListener('scroll', function(){
+    if (!navTicking){
+      window.requestAnimationFrame(function(){ updateActiveNav(); navTicking = false; });
+      navTicking = true;
+    }
+  });
+  updateActiveNav();
+
+  // ---------- Scroll reveal ----------
+  var revealEls = document.querySelectorAll('.reveal');
+  if ('IntersectionObserver' in window){
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if (entry.isIntersecting){
+          entry.target.classList.add('is-visible');
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+    revealEls.forEach(function(el){ io.observe(el); });
+  } else {
+    revealEls.forEach(function(el){ el.classList.add('is-visible'); });
+  }
+
+  // ---------- Hero graphic draw-in ----------
+  var heroGraphic = document.getElementById('heroGraphic');
+  if (heroGraphic){
+    if ('IntersectionObserver' in window){
+      var heroIo = new IntersectionObserver(function(entries){
+        entries.forEach(function(entry){
+          if (entry.isIntersecting){
+            heroGraphic.classList.add('in-view');
+            heroIo.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.2 });
+      heroIo.observe(heroGraphic);
+    } else {
+      heroGraphic.classList.add('in-view');
+    }
+  }
+})();
+</script>
+</body>
+</html>
