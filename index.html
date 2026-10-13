@@ -701,8 +701,8 @@ a.t3-label.crown{cursor:pointer}
 .t3-compact .t3-label:not(.crown):hover,.t3-compact .t3-label.is-active{background:var(--accent);color:#fff}
 .t3-legend{display:none;list-style:none;margin:.75rem 0 0;padding:0;grid-template-columns:1fr 1fr;gap:.4rem .6rem}
 .t3-compact + .t3-legend{display:grid}
-.t3-legend a{display:flex;align-items:center;gap:.5rem;font-size:.8125rem;font-weight:500;color:var(--text-secondary);padding:.45rem .55rem;border:1px solid var(--border-soft);border-radius:var(--radius-s);background:var(--surface)}
-.t3-legend a:hover,.t3-legend a:focus-visible{border-color:var(--accent);color:var(--accent)}
+.t3-legend a,.t3-legend button{display:flex;align-items:center;gap:.5rem;font-size:.8125rem;font-weight:500;color:var(--text-secondary);padding:.45rem .55rem;border:1px solid var(--border-soft);border-radius:var(--radius-s);background:var(--surface);font-family:inherit;text-align:left;cursor:pointer;width:100%}
+.t3-legend a:hover,.t3-legend a:focus-visible,.t3-legend button:hover,.t3-legend a.is-active,.t3-legend button.is-active{border-color:var(--accent);color:var(--accent)}
 .t3-legend b{flex:none;display:inline-flex;align-items:center;justify-content:center;width:18px;height:18px;border-radius:50%;background:var(--accent-tint);color:var(--accent);font:700 10px/1 'Manrope',sans-serif}
 
 /* ===================== Opening animation ===================== */
@@ -717,7 +717,26 @@ a.t3-label.crown{cursor:pointer}
 @keyframes hdrIn{from{transform:translateY(-100%);opacity:0}}
 html.no-motion .hero-content>*{opacity:1;transform:none;filter:none;animation:none}
 html.no-motion .hero-bgdots,html.no-motion .site-header{animation:none}
-@media (max-width:520px){.t3-label{font-size:10.5px;padding:5px 5px}}
+@media (max-width:520px){.t3-label{font-size:10.5px;padding:3px 4px}}
+
+/* ===================== Mobile / tablet ===================== */
+@media (max-width:900px){
+  .tree-canvas{display:block}
+  .branch-panel{display:block;min-height:0;padding:1.5rem 1.35rem}
+  .tree-list{display:none}
+  .tree-layout{gap:1.5rem}
+  #expTree{--t3-ar:1/1}
+}
+@media (max-width:640px){
+  .hero-graphic{max-width:420px}
+  .hero-inner{gap:1.5rem}
+}
+@media (max-width:420px){
+  .logo-name span{display:none}
+  .header-right{gap:.5rem}
+  .btn-resume{padding:.5rem .75rem}
+  .logo{gap:.55rem}
+}
 </style>
 </head>
 <body>
@@ -793,7 +812,7 @@ html.no-motion .hero-bgdots,html.no-motion .site-header{animation:none}
       </div>
 
       <div class="hero-graphic" id="heroGraphic">
-        <div class="t3" id="heroTree" role="group" aria-label="Interactive 3D tree: finance fundamentals as roots, a trunk, and six branches for Trade Finance, Taxation, Working Capital, Finance Automation, Financial Reporting and FP&amp;A. Drag to rotate.">
+        <div class="t3" id="heroTree" role="group" aria-label="Interactive 3D tree: finance fundamentals as roots, a trunk, and six branches linking to the About, Expertise, Experience, Projects, Education and Contact sections. Drag to rotate.">
           <canvas aria-hidden="true"></canvas>
         </div>
       </div>
@@ -1604,7 +1623,7 @@ html.no-motion .hero-bgdots,html.no-motion .site-header{animation:none}
     nodes.push({p:[tx(HT),HT+.04,tz(HT)],g:2.2,i:-1,big:1,txt:cfg.crown,href:cfg.crownHref});
 
     var fl=[]; if(cfg.fire) for(i=0;i<28;i++) fl.push({a:rnd()*6.283,r:.45+rnd()*.85,y:.4+rnd()*1.3,s:(.15+rnd()*.25)*(rnd()>.5?1:-1),p:rnd()*6.283});
-    var sp=0;
+    var sp=0, lgA=[];
     /* ---- state ---- */
     var W=0,H=0,dpr=1,t=reduced?99:0,yaw=cfg.yaw||0,tgt=null,active=-1,drag=0,moved=0,lx=0,my=.5,vis=false,raf=0,last=0;
     function pick(i){ active=i; if(cfg.rotate){ tgt=cfg.branches[i].a-Math.PI/2+.7; } if(cfg.onSelect) cfg.onSelect(cfg.branches[i].key); }
@@ -1627,8 +1646,8 @@ html.no-motion .hero-bgdots,html.no-motion .site-header{animation:none}
     if(cfg.legend){                                       // phone legend (shown only when the tree is narrow)
       var lg=document.createElement('ul'); lg.className='t3-legend';
       cfg.branches.forEach(function(b,i){
-        var li=document.createElement('li'), a=document.createElement('a'), nb=document.createElement('b'), tx2=document.createElement('span');
-        a.href=b.href; nb.textContent=i+1; tx2.textContent=b.label; a.appendChild(nb); a.appendChild(tx2);
+        var li=document.createElement('li'), a=document.createElement(b.href?'a':'button'), nb=document.createElement('b'), tx2=document.createElement('span');
+        if(b.href) a.href=b.href; else a.type='button'; lgA.push(a); a.addEventListener('click',function(){ pick(i); }); nb.textContent=i+1; tx2.textContent=b.label; a.appendChild(nb); a.appendChild(tx2);
         a.addEventListener('mouseenter',function(){ pick(i); }); a.addEventListener('focus',function(){ pick(i); });
         a.addEventListener('mouseleave',off); a.addEventListener('blur',off);
         li.appendChild(a); lg.appendChild(li);
@@ -1656,7 +1675,7 @@ html.no-motion .hero-bgdots,html.no-motion .site-header{animation:none}
 
     function size(){
       var R=host.getBoundingClientRect(); dpr=Math.min(window.devicePixelRatio||1,2);
-      W=R.width; H=R.height; if(cfg.legend) host.classList.toggle('t3-compact',W<440); cv.width=Math.round(W*dpr); cv.height=Math.round(H*dpr);
+      W=R.width; H=R.height; if(cfg.compact) host.classList.toggle('t3-compact',W<cfg.compact); cv.width=Math.round(W*dpr); cv.height=Math.round(H*dpr);
       nodes.forEach(function(n){ n.w=n.el.offsetWidth; n.h=n.el.offsetHeight; });
     }
     if('ResizeObserver' in window) new ResizeObserver(size).observe(host); else window.addEventListener('resize',size);
@@ -1671,10 +1690,10 @@ html.no-motion .hero-bgdots,html.no-motion .site-header{animation:none}
       if(cfg.sway && !reduced && !drag && active<0) sp+=dt*.45;
       var intro=eo(cl(t/4.4)), zoom=(cfg.rich?.8:.84)+(cfg.rich?.2:.16)*intro, Y=yaw+(cfg.sway?Math.sin(sp)*.38:0)-(1-intro)*(cfg.rich?2.2:1.6), P=.2+(my-.5)*.12+(cfg.rich?(1-intro)*.35:0),
         cY=Math.cos(Y), sY=Math.sin(Y), cP=Math.cos(P), sP=Math.sin(P),
-        S=Math.min(W/(cfg.rich?3.3:3.1),H/(cfg.rich?3.15:2.9))*zoom, sz=S/230, CX=W/2, CY=H*.5;
+        S=Math.min(W/(cfg.rich?3.3:3.1),H/(cfg.rich?3.15:2.9))*zoom, sz=S/230, CX=W/2, CY=H*.5, VS=(cfg.rich&&W<440)?1.3:1;
       function pr(p){
         var x=p[0]*cY+p[2]*sY, z=-p[0]*sY+p[2]*cY, y=p[1]-.6, y3=y*cP-z*sP, z3=y*sP+z*cP, kk=6/(6-z3);
-        return [CX+x*S*kk, CY-y3*S*kk, z3, kk];
+        return [CX+x*S*kk, CY-y3*S*kk*VS, z3, kk];
       }
       g.setTransform(dpr,0,0,dpr,0,0); g.clearRect(0,0,W,H);
       var items=[];
@@ -1737,7 +1756,7 @@ html.no-motion .hero-bgdots,html.no-motion .site-header{animation:none}
         }
         el.style.opacity=(n.lf*(n.i<0?1:(.6+.4*dp(q[2]))*((active>=0&&!isA)?.6:1))).toFixed(3);
         el.style.transform='translate('+x.toFixed(1)+'px,'+y.toFixed(1)+'px)';
-        el.classList.toggle('on',n.lf>.6); el.classList.toggle('is-active',isA);
+        el.classList.toggle('on',n.lf>.6); el.classList.toggle('is-active',isA); if(n.i>=0&&lgA[n.i]) lgA[n.i].classList.toggle('is-active',isA);
       });
       items.sort(function(a,b){ return a.z-b.z; });
       items.forEach(function(it){ it.d(); });
@@ -1754,18 +1773,18 @@ html.no-motion .hero-bgdots,html.no-motion .site-header{animation:none}
   }
 
   Tree3D(document.getElementById('heroTree'),{
-    seed:5, fan:true, sway:true, rich:true, fire:true, crown:'CORPORATE FINANCE', crownHref:'#about', legend:true,
+    seed:5, fan:true, sway:true, rich:true, fire:true, crown:'CORPORATE FINANCE', crownHref:'#home',
     branches:[
-      {label:'Trade Finance',href:'#expertise'},
-      {label:'Taxation',href:'#education'},
-      {label:'Working Capital',href:'#expertise'},
-      {label:'Finance Automation',href:'#projects'},
-      {label:'Financial Reporting',href:'#experience'},
-      {label:'FP&A',href:'#expertise'}
+      {label:'About',href:'#about'},
+      {label:'Expertise',href:'#expertise'},
+      {label:'Experience',href:'#experience'},
+      {label:'Projects',href:'#projects'},
+      {label:'Education',href:'#education'},
+      {label:'Contact',href:'#contact'}
     ]
   });
   Tree3D(document.getElementById('expTree'),{
-    seed:9, spin:.1, crown:'CORPORATE FINANCE', rotate:true, keep:true,
+    seed:9, spin:.1, crown:'CORPORATE FINANCE', rotate:true, keep:true, legend:true, compact:440,
     onSelect:function(key){ setPanel(key,null); },
     branches:[
       {label:'FP&A',key:'fpa'},
