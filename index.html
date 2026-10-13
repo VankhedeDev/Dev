@@ -42,7 +42,7 @@
     "addressRegion": "Gujarat",
     "addressCountry": "IN"
   },
-  "knowsAbout": ["Financial Planning & Analysis", "Working Capital Management","International Compliance" "Trade Finance", "Financial Reporting", "Corporate Taxation", "Power BI", "Finance Automation"]
+  "knowsAbout": ["Financial Planning & Analysis", "Working Capital Management","International Compliance", "Trade Finance", "Financial Reporting", "Corporate Taxation", "Power BI", "Finance Automation"]
 }
 </script>
 
@@ -679,6 +679,45 @@
     .project-card{ padding: 1.6rem; }
     .nav-mobile a{ padding:.9rem 1.25rem; }
   }
+/* ===================== 3D Finance Tree ===================== */
+.hero-graphic{width:100%}
+.t3{position:relative;width:100%;aspect-ratio:var(--t3-ar,6/7);touch-action:pan-y;cursor:grab;user-select:none;-webkit-user-select:none}
+.t3.is-drag{cursor:grabbing}
+.t3 canvas{position:absolute;inset:0;width:100%;height:100%;display:block}
+.t3-label{position:absolute;left:0;top:0;white-space:nowrap;font:500 11.5px/1 'Inter',sans-serif;letter-spacing:.01em;
+  color:var(--text-secondary);background:none;border:0;border-radius:3px;padding:6px 7px;margin:0;opacity:0;pointer-events:none;
+  cursor:pointer;text-decoration:none;will-change:transform,opacity;transition:color .2s,background .2s}
+.t3-label.on{pointer-events:auto}
+.t3-label:hover,.t3-label:focus-visible,.t3-label.is-active{color:var(--accent);background:var(--accent-tint)}
+.t3-label.crown{font:700 12px/1 'Manrope',sans-serif;letter-spacing:.08em;color:var(--text-primary);cursor:default}
+a.t3-label.crown{cursor:pointer}
+.t3-label:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.t3-tip{position:absolute;left:0;right:0;bottom:-4px;text-align:center;font-size:.75rem;color:var(--text-faint);pointer-events:none}
+#expTree{--t3-ar:6/5}
+.t3-n{display:none}
+.t3-compact .t3-label:not(.crown) .t3-f{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.t3-compact .t3-n{display:inline}
+.t3-compact .t3-label:not(.crown){font:700 10.5px/1 'Manrope',sans-serif;color:var(--accent);background:var(--accent-tint);border-radius:999px;padding:4px 7px}
+.t3-compact .t3-label:not(.crown):hover,.t3-compact .t3-label.is-active{background:var(--accent);color:#fff}
+.t3-legend{display:none;list-style:none;margin:.75rem 0 0;padding:0;grid-template-columns:1fr 1fr;gap:.4rem .6rem}
+.t3-compact + .t3-legend{display:grid}
+.t3-legend a{display:flex;align-items:center;gap:.5rem;font-size:.8125rem;font-weight:500;color:var(--text-secondary);padding:.45rem .55rem;border:1px solid var(--border-soft);border-radius:var(--radius-s);background:var(--surface)}
+.t3-legend a:hover,.t3-legend a:focus-visible{border-color:var(--accent);color:var(--accent)}
+.t3-legend b{flex:none;display:inline-flex;align-items:center;justify-content:center;width:18px;height:18px;border-radius:50%;background:var(--accent-tint);color:var(--accent);font:700 10px/1 'Manrope',sans-serif}
+
+/* ===================== Opening animation ===================== */
+.hero-content>*{opacity:0;transform:translateY(22px);filter:blur(4px);
+  animation:heroIn .9s cubic-bezier(.2,.7,.2,1) forwards;animation-delay:calc(.2s + var(--i,0)*.12s)}
+.hero-content>:nth-child(2){--i:1}.hero-content>:nth-child(3){--i:2}.hero-content>:nth-child(4){--i:3}
+.hero-content>:nth-child(5){--i:4}.hero-content>:nth-child(6){--i:5}
+.hero-bgdots{animation:fadeIn 1.6s ease both}
+.site-header{animation:hdrIn .8s cubic-bezier(.2,.7,.2,1) both}
+@keyframes heroIn{to{opacity:1;transform:none;filter:none}}
+@keyframes fadeIn{from{opacity:0}}
+@keyframes hdrIn{from{transform:translateY(-100%);opacity:0}}
+html.no-motion .hero-content>*{opacity:1;transform:none;filter:none;animation:none}
+html.no-motion .hero-bgdots,html.no-motion .site-header{animation:none}
+@media (max-width:520px){.t3-label{font-size:10.5px;padding:5px 5px}}
 </style>
 </head>
 <body>
@@ -754,78 +793,9 @@
       </div>
 
       <div class="hero-graphic" id="heroGraphic">
-        <svg viewBox="0 0 480 560" role="img" aria-label="Diagram of a tree: roots as finance fundamentals, a trunk, and six branches representing FP and A, working capital, trade finance, financial reporting, taxation and finance automation.">
-          <!-- roots -->
-          <g class="roots">
-            <path class="tree-root-line draw" style="--len:140; --d:.05s" d="M240 420 C 240 452 190 458 118 464"/>
-            <path class="tree-root-line draw" style="--len:140; --d:.1s" d="M240 420 C 240 452 292 458 366 462"/>
-            <path class="tree-root-line draw" style="--len:150; --d:.15s" d="M240 420 C 240 462 200 474 150 502"/>
-            <path class="tree-root-line draw" style="--len:150; --d:.2s" d="M240 420 C 240 458 282 470 336 498"/>
-            <path class="tree-root-line draw" style="--len:120; --d:.25s" d="M240 420 C 240 470 224 492 206 526"/>
-            <path class="tree-root-line draw" style="--len:120; --d:.3s" d="M240 420 C 240 466 258 494 276 522"/>
-          </g>
-          <!-- trunk -->
-          <path class="tree-trunk-line draw" style="--len:130; --d:.35s" d="M240 420 C 238 380 242 348 240 300"/>
-          <!-- branches -->
-          <g>
-            <path class="tree-branch-line draw" style="--len:180; --d:.6s" d="M240 362 C 200 352 150 332 96 302"/>
-            <path class="tree-branch-line draw" style="--len:180; --d:.68s" d="M240 362 C 280 352 330 334 384 306"/>
-            <path class="tree-branch-line draw" style="--len:190; --d:.76s" d="M240 322 C 205 306 168 276 128 240"/>
-            <path class="tree-branch-line draw" style="--len:190; --d:.84s" d="M240 322 C 274 306 306 276 340 242"/>
-            <path class="tree-branch-line draw" style="--len:200; --d:.92s" d="M240 302 C 226 262 200 216 176 172"/>
-            <path class="tree-branch-line draw" style="--len:200; --d:1s" d="M240 302 C 254 262 282 220 306 178"/>
-            <path class="tree-branch-line draw" style="--len:160; --d:1.08s" d="M240 300 C 240 250 240 200 240 150"/>
-          </g>
-          <!-- leaves -->
-          <g>
-            <circle class="tree-leaf fade-node" style="--d:1.3s" cx="150" cy="316" r="2.6"/>
-            <circle class="tree-leaf fade-node" style="--d:1.34s" cx="332" cy="320" r="2.6"/>
-            <circle class="tree-leaf fade-node" style="--d:1.38s" cx="170" cy="268" r="2.6"/>
-            <circle class="tree-leaf fade-node" style="--d:1.42s" cx="300" cy="272" r="2.6"/>
-            <circle class="tree-leaf fade-node" style="--d:1.46s" cx="206" cy="212" r="2.6"/>
-            <circle class="tree-leaf fade-node" style="--d:1.5s" cx="276" cy="216" r="2.6"/>
-            <circle class="tree-leaf fade-node" style="--d:1.54s" cx="240" cy="200" r="2.6"/>
-          </g>
-          <!-- nodes + labels -->
-          <g>
-            <a href="#expertise" class="tree-node-link" aria-label="Go to Trade Finance expertise">
-              <circle class="tree-node fade-node" style="--d:1.2s" cx="96" cy="302" r="5"/>
-              <text class="tree-label fade-node" style="--d:1.24s" x="86" y="306" text-anchor="end">Trade Finance</text>
-            </a>
-
-            <a href="#education" class="tree-node-link" aria-label="Go to Taxation and compliance">
-              <circle class="tree-node fade-node" style="--d:1.24s" cx="384" cy="306" r="5"/>
-              <text class="tree-label fade-node" style="--d:1.28s" x="394" y="310" text-anchor="start">Taxation</text>
-            </a>
-
-            <a href="#expertise" class="tree-node-link" aria-label="Go to Working Capital expertise">
-              <circle class="tree-node fade-node" style="--d:1.28s" cx="128" cy="240" r="5"/>
-              <text class="tree-label fade-node" style="--d:1.32s" x="118" y="244" text-anchor="end">Working Capital</text>
-            </a>
-
-            <a href="#projects" class="tree-node-link" aria-label="Go to Finance Automation projects">
-              <circle class="tree-node fade-node" style="--d:1.32s" cx="340" cy="242" r="5"/>
-              <text class="tree-label fade-node" style="--d:1.36s" x="350" y="246" text-anchor="start">Finance Automation</text>
-            </a>
-
-            <a href="#experience" class="tree-node-link" aria-label="Go to Financial Reporting experience">
-              <circle class="tree-node fade-node" style="--d:1.36s" cx="176" cy="172" r="5"/>
-              <text class="tree-label fade-node" style="--d:1.4s" x="166" y="176" text-anchor="end">Financial Reporting</text>
-            </a>
-
-            <a href="#expertise" class="tree-node-link" aria-label="Go to FP&amp;A expertise">
-              <circle class="tree-node fade-node" style="--d:1.4s" cx="306" cy="178" r="5"/>
-              <text class="tree-label fade-node" style="--d:1.44s" x="316" y="182" text-anchor="start">FP&amp;A</text>
-            </a>
-
-            <a href="#about" class="tree-node-link" aria-label="Go to About Dev Vankhede">
-              <circle class="tree-node tree-node-solid fade-node" style="--d:1.44s" cx="240" cy="150" r="6.5"/>
-              <text class="tree-label-strong fade-node" style="--d:1.48s" x="240" y="130" text-anchor="middle">CORPORATE FINANCE</text>
-            </a>
-          </g>
-          <!-- ground line -->
-          <line class="tree-root-line fade-node" style="--d:.5s" x1="80" y1="420" x2="400" y2="420" stroke-dasharray="3 5"/>
-        </svg>
+        <div class="t3" id="heroTree" role="group" aria-label="Interactive 3D tree: finance fundamentals as roots, a trunk, and six branches for Trade Finance, Taxation, Working Capital, Finance Automation, Financial Reporting and FP&amp;A. Drag to rotate.">
+          <canvas aria-hidden="true"></canvas>
+        </div>
       </div>
     </div>
   </section>
@@ -881,57 +851,9 @@
 
       <div class="tree-layout">
         <div class="tree-canvas reveal" id="treeCanvas">
-          <svg viewBox="0 0 620 520" role="group" aria-label="Interactive expertise tree with five branches from a corporate finance trunk">
-            <!-- trunk -->
-            <path class="tree-trunk-line" d="M310 480 L310 300"/>
-            <rect x="228" y="480" width="164" height="30" rx="2" fill="none" stroke="var(--accent)" stroke-width="1.4"/>
-            <text class="tree-label-strong" x="310" y="500" text-anchor="middle">CORPORATE FINANCE</text>
-
-            <g class="branch" data-key="fpa" tabindex="0" role="button" aria-label="FP and A branch">
-              <path class="tree-branch-line" d="M310 300 C 280 250 200 200 118 156"/>
-              <circle class="tree-leaf" cx="250" cy="238" r="3.4"/>
-              <circle class="tree-leaf" cx="200" cy="208" r="3.4"/>
-              <circle class="tree-leaf" cx="155" cy="178" r="3.4"/>
-              <circle class="tree-node" cx="118" cy="156" r="6.5"/>
-              <text class="tree-label" x="118" y="138" text-anchor="middle">FP&amp;A</text>
-            </g>
-
-            <g class="branch" data-key="wc" tabindex="0" role="button" aria-label="Working capital branch">
-              <path class="tree-branch-line" d="M310 348 C 260 328 160 304 92 280"/>
-              <circle class="tree-leaf" cx="250" cy="324" r="3.4"/>
-              <circle class="tree-leaf" cx="188" cy="304" r="3.4"/>
-              <circle class="tree-leaf" cx="130" cy="290" r="3.4"/>
-              <circle class="tree-node" cx="92" cy="280" r="6.5"/>
-              <text class="tree-label" x="92" y="262" text-anchor="middle">Working Capital</text>
-            </g>
-
-            <g class="branch" data-key="tf" tabindex="0" role="button" aria-label="Trade finance branch">
-              <path class="tree-branch-line" d="M310 348 C 360 328 460 304 528 280"/>
-              <circle class="tree-leaf" cx="370" cy="324" r="3.4"/>
-              <circle class="tree-leaf" cx="432" cy="304" r="3.4"/>
-              <circle class="tree-leaf" cx="490" cy="290" r="3.4"/>
-              <circle class="tree-node" cx="528" cy="280" r="6.5"/>
-              <text class="tree-label" x="528" y="262" text-anchor="middle">Trade Finance</text>
-            </g>
-
-            <g class="branch" data-key="ra" tabindex="0" role="button" aria-label="Reporting and analytics branch">
-              <path class="tree-branch-line" d="M310 300 C 345 250 430 194 508 150"/>
-              <circle class="tree-leaf" cx="372" cy="238" r="3.4"/>
-              <circle class="tree-leaf" cx="428" cy="202" r="3.4"/>
-              <circle class="tree-leaf" cx="474" cy="172" r="3.4"/>
-              <circle class="tree-node" cx="508" cy="150" r="6.5"/>
-              <text class="tree-label" x="508" y="132" text-anchor="middle">Reporting &amp; Analytics</text>
-            </g>
-
-            <g class="branch" data-key="tc" tabindex="0" role="button" aria-label="Tax and compliance branch">
-              <path class="tree-branch-line" d="M310 300 C 304 240 314 170 310 104"/>
-              <circle class="tree-leaf" cx="306" cy="244" r="3.4"/>
-              <circle class="tree-leaf" cx="313" cy="192" r="3.4"/>
-              <circle class="tree-leaf" cx="309" cy="142" r="3.4"/>
-              <circle class="tree-node" cx="310" cy="104" r="6.5"/>
-              <text class="tree-label" x="310" y="86" text-anchor="middle">Tax &amp; Compliance</text>
-            </g>
-          </svg>
+          <div class="t3" id="expTree" role="group" aria-label="Interactive 3D expertise tree with five branches from a corporate finance trunk. Drag to rotate.">
+            <canvas aria-hidden="true"></canvas>
+          </div>
         </div>
 
         <div class="branch-panel reveal" id="branchPanel" aria-live="polite">
@@ -941,7 +863,7 @@
           <ul class="panel-skills" id="panelSkills">
             <li>Budgeting</li><li>Forecasting</li><li>Variance Analysis</li><li>Cash Flow</li>
           </ul>
-          <p class="tree-hint">Hover or use Tab and Enter on a branch to change this panel.</p>
+          <p class="tree-hint">Drag to rotate the tree. Hover, tap or press Tab then Enter on a branch to change this panel.</p>
         </div>
       </div>
 
@@ -1627,6 +1549,231 @@
         setPanel(key, b);
       }
     });
+  });
+
+  // ---------- 3D Finance Tree (canvas, no libraries) ----------
+  function Tree3D(host, cfg){
+    var cv = host.querySelector('canvas'), g = cv.getContext('2d'), cs = getComputedStyle(document.documentElement);
+    function tok(n, d){ return cs.getPropertyValue(n).trim() || d; }
+    var CA = tok('--accent','#37327D'), CM = tok('--accent-mid','#565099'), CR = tok('--border-strong','#B7B9C2'), CF = tok('--surface','#fff');
+    var sd = cfg.seed || 11;
+    function rnd(){ sd|=0; sd=sd+0x6D2B79F5|0; var t=Math.imul(sd^sd>>>15,1|sd); t=t+Math.imul(t^t>>>7,61|t)^t; return ((t^t>>>14)>>>0)/4294967296; }
+    function cl(x){ return x<0?0:x>1?1:x; }
+    function eo(x){ return 1-Math.pow(1-x,3); }
+    function eb(x){ x-=1; return 1+2.70158*x*x*x+1.70158*x*x; }
+    var pop=cfg.rich?eb:eo;
+    function dp(z){ return .5+.5*cl((z+1.4)/2.8); }
+    function bez(a,b,c,d,n){ var o=[],i,t,u; for(i=0;i<=n;i++){ t=i/n; u=1-t;
+      o.push([0,1,2].map(function(k){ return u*u*u*a[k]+3*u*u*t*b[k]+3*u*t*t*c[k]+t*t*t*d[k]; })); } return o; }
+
+    /* ---- geometry (world units: trunk height ~1.55) ---- */
+    var HT=cfg.rich?1.72:1.55, lines=[], leaves=[], dots=[], nodes=[], paths=[], i, k, q, yy;
+    function tx(y){ return .05*Math.sin(y*3.1); }
+    function tz(y){ return .04*Math.cos(y*2.5); }
+    var tr=[]; for(i=0;i<=26;i++){ yy=HT*i/26; tr.push([tx(yy),yy,tz(yy)]); }
+    lines.push({p:tr,w0:4.8,w1:1.8,g0:.8,g1:2,c:CA,br:-1});
+    if(cfg.rich) for(i=0;i<4;i++){ var fa=i*1.57+.5, fc=Math.cos(fa), fs=Math.sin(fa);
+      lines.push({p:bez([.2*fc,0,.2*fs],[.08*fc,.02,.08*fs],[.03*fc,.1,.03*fs],[tx(.24),.24,tz(.24)],10),w0:1.8,w1:1.3,g0:.7,g1:1.4,c:CA,br:-1}); }
+    for(i=0;i<7;i++){                                   // roots
+      var ra=i*2.4+.3, rr=.5+rnd()*.5, rd=.4+rnd()*.35, rc=Math.cos(ra), rs=Math.sin(ra);
+      lines.push({p:bez([0,0,0],[.1*rr*rc,-.25*rd,.1*rr*rs],[.6*rr*rc,-.4*rd,.6*rr*rs],[rr*rc,-rd,rr*rs],14),
+        w0:1.8,w1:.5,g0:.15+i*.07,g1:1.2+i*.07,c:CR,br:-1});
+    }
+    for(k=0;k<3;k++){ var gn=34+k*14; for(i=0;i<gn;i++){ var gb=i/gn*6.283, gr=.5+.42*k;
+      dots.push({p:[gr*Math.cos(gb),0,gr*Math.sin(gb)],g:k*.28+.05}); } }
+    var NB=cfg.branches.length;
+    cfg.branches.forEach(function(b,i){
+      var f=NB>1?i/(NB-1):0, y0=cfg.fan?.42+.66*f:.5+.62*f, a=cfg.fan?((i%2?0:Math.PI)+((i>>1)%2?.55:-.55)):.4+i*2.4, r=cfg.fan?.92-.16*f:1.18-.28*f, up=cfg.fan?.55-.06*f:.55-.1*f;
+      b.a=a;
+      var p0=[tx(y0),y0,tz(y0)], ca=Math.cos(a), sa=Math.sin(a),
+        bp=bez(p0,[p0[0]+.18*r*ca,y0+.5*up,p0[2]+.18*r*sa],[.72*r*ca,y0+.9*up,.72*r*sa],[r*ca,y0+up,r*sa],22),
+        g0=1.6+i*.2, g1=g0+1;
+      lines.push({p:bp,w0:2.4,w1:1.1,g0:g0,g1:g1,c:CM,br:i});
+      (cfg.rich?[5,9,13,17,20]:[8,15]).forEach(function(j){ leaves.push({p:bp[j],r:2.4,g:g0+.5,br:i}); });
+      (cfg.rich?[.34,.52,.7,.86]:[.38,.6,.8]).forEach(function(t,j){                // twigs + leaf clusters
+        var s=bp[Math.round(t*22)], a2=a+(j%2?1:-1)*(.6+rnd()*.3), L=.2+rnd()*.14,
+          e=[s[0]+L*Math.cos(a2),s[1]+L*(.5+rnd()*.5),s[2]+L*Math.sin(a2)],
+          m=[(s[0]+e[0])/2,(s[1]+e[1])/2+.07,(s[2]+e[2])/2], tg=g1-.4+j*.15;
+        lines.push({p:bez(s,m,m,e,7),w0:1.1,w1:.6,g0:tg,g1:tg+.7,c:CM,br:i});
+        for(var n=0;n<3;n++) leaves.push({p:[e[0]+(rnd()-.5)*.09,e[1]+(rnd()-.5)*.09,e[2]+(rnd()-.5)*.09],r:n?1.8:2.6,g:tg+.6+n*.08,br:i});
+      });
+      var pt=[]; for(var n=0;n<=10;n++){ var y1=y0*n/10; pt.push([tx(y1),y1,tz(y1)]); }
+      paths.push({p:pt.concat(bp.slice(1)),br:i,o:i*.29});
+      nodes.push({p:bp[22],g:g1,i:i,key:b.key,txt:b.label,href:b.href});
+    });
+    nodes.push({p:[tx(HT),HT+.04,tz(HT)],g:2.2,i:-1,big:1,txt:cfg.crown,href:cfg.crownHref});
+
+    var fl=[]; if(cfg.fire) for(i=0;i<28;i++) fl.push({a:rnd()*6.283,r:.45+rnd()*.85,y:.4+rnd()*1.3,s:(.15+rnd()*.25)*(rnd()>.5?1:-1),p:rnd()*6.283});
+    var sp=0;
+    /* ---- state ---- */
+    var W=0,H=0,dpr=1,t=reduced?99:0,yaw=cfg.yaw||0,tgt=null,active=-1,drag=0,moved=0,lx=0,my=.5,vis=false,raf=0,last=0;
+    function pick(i){ active=i; if(cfg.rotate){ tgt=cfg.branches[i].a-Math.PI/2+.7; } if(cfg.onSelect) cfg.onSelect(cfg.branches[i].key); }
+    function off(){ if(!cfg.keep) active=-1; }
+
+    nodes.forEach(function(n){
+      var el=document.createElement(n.href?'a':(n.i<0?'span':'button'));
+      el.className='t3-label'+(n.i<0?' crown':'');
+      var sf=document.createElement('span'); sf.className='t3-f'; sf.textContent=n.txt; el.appendChild(sf);
+      if(n.i>=0){ var sn=document.createElement('span'); sn.className='t3-n'; sn.setAttribute('aria-hidden','true'); sn.textContent=n.i+1; el.appendChild(sn); }
+      if(n.href) el.href=n.href; else if(n.i>=0) el.type='button';
+      n.el=el; host.appendChild(el);
+      if(n.i>=0){
+        var on=function(){ pick(n.i); };
+        el.addEventListener('mouseenter',on); el.addEventListener('focus',on); el.addEventListener('click',on);
+        el.addEventListener('mouseleave',off); el.addEventListener('blur',off);
+      }
+    });
+
+    if(cfg.legend){                                       // phone legend (shown only when the tree is narrow)
+      var lg=document.createElement('ul'); lg.className='t3-legend';
+      cfg.branches.forEach(function(b,i){
+        var li=document.createElement('li'), a=document.createElement('a'), nb=document.createElement('b'), tx2=document.createElement('span');
+        a.href=b.href; nb.textContent=i+1; tx2.textContent=b.label; a.appendChild(nb); a.appendChild(tx2);
+        a.addEventListener('mouseenter',function(){ pick(i); }); a.addEventListener('focus',function(){ pick(i); });
+        a.addEventListener('mouseleave',off); a.addEventListener('blur',off);
+        li.appendChild(a); lg.appendChild(li);
+      });
+      host.parentNode.insertBefore(lg,host.nextSibling);
+    }
+    host.addEventListener('pointerdown',function(e){
+      if(e.target.closest('.t3-label')) return;
+      drag=1; moved=0; lx=e.clientX; host.classList.add('is-drag');
+      if(host.setPointerCapture) host.setPointerCapture(e.pointerId);
+    });
+    host.addEventListener('pointermove',function(e){
+      var R=host.getBoundingClientRect(); my=(e.clientY-R.top)/R.height;
+      if(drag){ var dx=e.clientX-lx; lx=e.clientX; moved+=Math.abs(dx); yaw+=dx*.009; tgt=null; }
+    });
+    function up(e){
+      if(!drag) return; drag=0; host.classList.remove('is-drag');
+      if(moved<4){                                       // tap on a node dot
+        var R=host.getBoundingClientRect(), px=e.clientX-R.left, py=e.clientY-R.top, best=null, bd=22;
+        nodes.forEach(function(n){ var d=Math.hypot(n.sx-px,n.sy-py); if(d<bd){ bd=d; best=n; } });
+        if(best && best.i>=0 || (best && best.href)) best.el.click();
+      }
+    }
+    host.addEventListener('pointerup',up); host.addEventListener('pointercancel',up);
+
+    function size(){
+      var R=host.getBoundingClientRect(); dpr=Math.min(window.devicePixelRatio||1,2);
+      W=R.width; H=R.height; if(cfg.legend) host.classList.toggle('t3-compact',W<440); cv.width=Math.round(W*dpr); cv.height=Math.round(H*dpr);
+      nodes.forEach(function(n){ n.w=n.el.offsetWidth; n.h=n.el.offsetHeight; });
+    }
+    if('ResizeObserver' in window) new ResizeObserver(size).observe(host); else window.addEventListener('resize',size);
+    if(document.fonts&&document.fonts.ready) document.fonts.ready.then(size);
+    size();
+
+    /* ---- render ---- */
+    function draw(dt){
+      if(W<10) return;
+      if(tgt!=null){ var d=((tgt-yaw)%6.2832+9.4248)%6.2832-3.1416; yaw+=d*cl(dt*3.2); }
+      else if(!reduced && !drag && active<0 && !cfg.sway) yaw+=dt*(cfg.spin||.12);
+      if(cfg.sway && !reduced && !drag && active<0) sp+=dt*.45;
+      var intro=eo(cl(t/4.4)), zoom=(cfg.rich?.8:.84)+(cfg.rich?.2:.16)*intro, Y=yaw+(cfg.sway?Math.sin(sp)*.38:0)-(1-intro)*(cfg.rich?2.2:1.6), P=.2+(my-.5)*.12+(cfg.rich?(1-intro)*.35:0),
+        cY=Math.cos(Y), sY=Math.sin(Y), cP=Math.cos(P), sP=Math.sin(P),
+        S=Math.min(W/(cfg.rich?3.3:3.1),H/(cfg.rich?3.15:2.9))*zoom, sz=S/230, CX=W/2, CY=H*.5;
+      function pr(p){
+        var x=p[0]*cY+p[2]*sY, z=-p[0]*sY+p[2]*cY, y=p[1]-.6, y3=y*cP-z*sP, z3=y*sP+z*cP, kk=6/(6-z3);
+        return [CX+x*S*kk, CY-y3*S*kk, z3, kk];
+      }
+      g.setTransform(dpr,0,0,dpr,0,0); g.clearRect(0,0,W,H);
+      var items=[];
+      if(t<1.6){ var s0=pr([0,0,0]); items.push({z:9,d:function(){ g.globalAlpha=cl(1.6-t)*.9; g.fillStyle=CA; g.beginPath(); g.arc(s0[0],s0[1],(3+2*Math.sin(t*9))*sz*s0[3]*1.6,0,6.3); g.fill(); }}); }
+      dots.forEach(function(o){ var f=cl((t-o.g)/.7); if(!f) return; var q=pr(o.p);
+        items.push({z:q[2],d:function(){ g.globalAlpha=.4*f*dp(q[2]); g.fillStyle=CR; g.beginPath(); g.arc(q[0],q[1],1.3*sz*q[3]+.4,0,6.3); g.fill(); }}); });
+      lines.forEach(function(L){
+        var f=cl((t-L.g0)/(L.g1-L.g0)); if(!f) return;
+        var n=L.p.length-1, u=eo(f)*n, pv=pr(L.p[0]), dim=(active>=0&&L.br>=0&&L.br!==active)?.3:1, hi=active>=0&&L.br===active;
+        for(var j=1;j<=Math.ceil(u);j++){
+          var qq=L.p[j], fr=j-u;
+          if(fr>0){ var o=L.p[j-1]; qq=[o[0]+(qq[0]-o[0])*(1-fr),o[1]+(qq[1]-o[1])*(1-fr),o[2]+(qq[2]-o[2])*(1-fr)]; }
+          var c=pr(qq), w=(L.w0+(L.w1-L.w0)*j/n)*sz*c[3]*(hi?1.5:1);
+          (function(a,b,w){ items.push({z:(a[2]+b[2])/2,d:function(){
+            g.globalAlpha=(L.c===CR?.8:1)*dim*dp(a[2]); g.strokeStyle=hi?CA:L.c; g.lineWidth=w;
+            g.beginPath(); g.moveTo(a[0],a[1]); g.lineTo(b[0],b[1]); g.stroke(); }}); })(pv,c,w);
+          pv=c;
+        }
+      });
+      leaves.forEach(function(o){ var f=cl((t-o.g)/.4); if(!f) return; var q=pr(o.p), dim=(active>=0&&o.br!==active)?.35:1;
+        items.push({z:q[2],d:function(){ g.globalAlpha=.34*f*dim*dp(q[2])+(active===o.br?.25:0); g.fillStyle=CA; g.beginPath(); g.arc(q[0],q[1],o.r*sz*q[3]*pop(f),0,6.3); g.fill(); }}); });
+      if(t>4.2 && !reduced) paths.forEach(function(Pa){            // capital flowing up the tree
+        var u=(t*.18+Pa.o)%1, n=Pa.p.length-1, dim=(active>=0&&Pa.br!==active)?.25:1;
+        for(var s=0;s<4;s++){ var uu=u-s*.018; if(uu<0) continue; var fi=uu*n, j=Math.floor(fi), fr=fi-j, a=Pa.p[j], b=Pa.p[Math.min(j+1,n)];
+          var q=pr([a[0]+(b[0]-a[0])*fr,a[1]+(b[1]-a[1])*fr,a[2]+(b[2]-a[2])*fr]);
+          (function(q,s){ items.push({z:q[2]+.05,d:function(){ g.globalAlpha=(1-s*.25)*.85*dim; g.fillStyle=CM; g.beginPath(); g.arc(q[0],q[1],(3-s*.55)*sz*q[3],0,6.3); g.fill(); }}); })(q,s); }
+      });
+      if(fl.length) fl.forEach(function(o){
+        var a=o.a+t*o.s, q=pr([o.r*Math.cos(a),o.y+.06*Math.sin(t*1.3+o.p),o.r*Math.sin(a)]), f=cl((t-3)/1.5)*(.35+.65*Math.abs(Math.sin(t*.9+o.p)));
+        if(f>0) items.push({z:q[2],d:function(){ g.globalAlpha=.55*f*dp(q[2]); g.fillStyle=CM; g.beginPath(); g.arc(q[0],q[1],1.9*sz*q[3]+.3,0,6.3); g.fill(); }}); });
+      nodes.forEach(function(n){
+        var f=cl((t-n.g)/.5), q=pr(n.p), isA=active===n.i&&n.i>=0; n.sx=q[0]; n.sy=q[1];
+        var r=Math.max((n.big?7:5.6)*sz*q[3]*(isA?1.25:1),3.5), dim=(active>=0&&n.i>=0&&!isA)?.5:1;
+        if(f>0) items.push({z:q[2]+.1,d:function(){
+          var rp=t-n.g;
+          if(rp>0&&rp<1.2){ g.globalAlpha=(1-rp/1.2)*.5; g.strokeStyle=CA; g.lineWidth=1.2; g.beginPath(); g.arc(q[0],q[1],r+rp*26*sz*q[3],0,6.3); g.stroke(); }
+          if(n.big&&cfg.rich&&t>3){ var ph=((t-3)%3.6)/3.6; g.globalAlpha=(1-ph)*.3; g.strokeStyle=CA; g.lineWidth=1; g.beginPath(); g.arc(q[0],q[1],r+ph*70*sz*q[3],0,6.3); g.stroke();
+            g.globalAlpha=.07+.03*Math.sin(t*2); g.fillStyle=CA; g.beginPath(); g.arc(q[0],q[1],r*3.6,0,6.3); g.fill(); }
+          g.globalAlpha=f*dp(q[2])*dim; g.fillStyle=(isA||n.big)?CA:CF; g.strokeStyle=CA; g.lineWidth=1.6;
+          g.beginPath(); g.arc(q[0],q[1],r*eo(f),0,6.3); g.fill(); g.stroke(); }});
+        n.q=q; n.lf=cl((t-n.g-.2)/.5); n.isA=isA;
+      });
+      var placed=[], ord=nodes.slice().sort(function(a,b){ return b.q[2]-a.q[2]; });
+      ord.forEach(function(n){
+        var q=n.q, el=n.el, w=n.w||80, h=n.h||24, x=q[0], y=q[1], isA=n.isA;
+        if(n.lf>.05){
+          var cands=[], fi=q[0]>CX?0:1, xs=[q[0]+10,q[0]-10-w], offs=[0,-1,1,-2,2,-3,3], best=null, fb=null;
+          if(n.i<0) cands.push([q[0]-w/2,q[1]-h-10]);
+          else { [fi,1-fi].forEach(function(si){ offs.forEach(function(o){ cands.push([xs[si],q[1]-h/2+o*(h+3)]); }); }); cands.push([q[0]-w/2,q[1]-h-8]); }
+          for(var c=0;c<cands.length&&!best;c++){
+            var cx=cands[c][0], cy=cands[c][1], last=c===cands.length-1;
+            if(n.i<0||last) cx=Math.max(2,Math.min(W-w-2,cx)); else if(cx<2||cx+w>W-2) continue;
+            if(!fb) fb=[cx,cy];
+            var hit=false;
+            placed.forEach(function(r){ if(cx<r[0]+r[2]+2&&cx+w+2>r[0]&&cy<r[1]+r[3]+1&&cy+h+1>r[1]) hit=true; });
+            if(!hit) nodes.forEach(function(m){ if(m!==n&&m.q[0]>cx-5&&m.q[0]<cx+w+5&&m.q[1]>cy-5&&m.q[1]<cy+h+5) hit=true; });
+            if(!hit) best=[cx,cy];
+          }
+          best=best||fb||[x,y]; x=best[0]; y=best[1]; placed.push([x,y,w,h]);
+        }
+        el.style.opacity=(n.lf*(n.i<0?1:(.6+.4*dp(q[2]))*((active>=0&&!isA)?.6:1))).toFixed(3);
+        el.style.transform='translate('+x.toFixed(1)+'px,'+y.toFixed(1)+'px)';
+        el.classList.toggle('on',n.lf>.6); el.classList.toggle('is-active',isA);
+      });
+      items.sort(function(a,b){ return a.z-b.z; });
+      items.forEach(function(it){ it.d(); });
+      g.globalAlpha=1;
+    }
+    function loop(now){
+      if(!vis){ raf=0; return; }
+      var dt=Math.min((now-last)/1000,.05); last=now; t+=reduced?0:dt; draw(dt); raf=requestAnimationFrame(loop);
+    }
+    function wake(){ if(vis&&!raf){ last=performance.now(); raf=requestAnimationFrame(loop); } }
+    if('IntersectionObserver' in window){
+      new IntersectionObserver(function(e){ vis=e[0].isIntersecting; wake(); },{threshold:.15}).observe(host);
+    } else { vis=true; wake(); }
+  }
+
+  Tree3D(document.getElementById('heroTree'),{
+    seed:5, fan:true, sway:true, rich:true, fire:true, crown:'CORPORATE FINANCE', crownHref:'#about', legend:true,
+    branches:[
+      {label:'Trade Finance',href:'#expertise'},
+      {label:'Taxation',href:'#education'},
+      {label:'Working Capital',href:'#expertise'},
+      {label:'Finance Automation',href:'#projects'},
+      {label:'Financial Reporting',href:'#experience'},
+      {label:'FP&A',href:'#expertise'}
+    ]
+  });
+  Tree3D(document.getElementById('expTree'),{
+    seed:9, spin:.1, crown:'CORPORATE FINANCE', rotate:true, keep:true,
+    onSelect:function(key){ setPanel(key,null); },
+    branches:[
+      {label:'FP&A',key:'fpa'},
+      {label:'Working Capital',key:'wc'},
+      {label:'Trade Finance',key:'tf'},
+      {label:'Reporting & Analytics',key:'ra'},
+      {label:'Tax & Compliance',key:'tc'}
+    ]
   });
 
   // ---------- Project "Explore" ----------
